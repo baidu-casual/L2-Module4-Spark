@@ -2,15 +2,15 @@
     "version": "1.4.0",
     "project": {
         "name": "spark-build-build",
-        "directory": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project",
-        "workspaceDir": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project",
+        "directory": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project",
+        "workspaceDir": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project",
         "sources": [
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/src/main/scala",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/src/main/scala-2.12",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/src/main/scala-2",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/src/main/java",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/src/main/scala-sbt-1.0",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/target/scala-2.12/sbt-1.0/src_managed/main"
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/src/main/scala",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/src/main/scala-2.12",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/src/main/scala-2",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/src/main/java",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/src/main/scala-sbt-1.0",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/target/scala-2.12/sbt-1.0/src_managed/main"
         ],
         "dependencies": [
             
@@ -105,11 +105,11 @@
             "/home/xs107-bairoy/.cache/coursier/v1/https/repo1.maven.org/maven2/com/squareup/okio/okio/1.17.2/okio-1.17.2.jar",
             "/home/xs107-bairoy/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/config/1.3.3/config-1.3.3.jar"
         ],
-        "out": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/.bloop/spark-build-build",
-        "classesDir": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/.bloop/spark-build-build/scala-2.12/sbt-1.0/classes",
+        "out": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/.bloop/spark-build-build",
+        "classesDir": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/.bloop/spark-build-build/scala-2.12/sbt-1.0/classes",
         "resources": [
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/src/main/resources",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/target/scala-2.12/sbt-1.0/resource_managed/main"
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/src/main/resources",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/target/scala-2.12/sbt-1.0/resource_managed/main"
         ],
         "scala": {
             "organization": "org.scala-lang",
@@ -126,7 +126,7 @@
                 "/home/xs107-bairoy/.sbt/boot/scala-2.12.13/lib/scala-xml_2.12-1.0.6.jar",
                 "/home/xs107-bairoy/.sbt/boot/scala-2.12.13/lib/scala-compiler.jar"
             ],
-            "analysis": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project/target/streams/compile/bloopAnalysisOut/_global/streams/inc_compile_2.12.zip",
+            "analysis": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project/target/streams/compile/bloopAnalysisOut/_global/streams/inc_compile_2.12.zip",
             "setup": {
                 "order": "mixed",
                 "addLibraryToBootClasspath": true,
@@ -201,7 +201,7 @@
             "config": {
                 "home": "/home/xs107-bairoy/binaries/jdk-11.0.10+9",
                 "options": [
-                    "-Duser.dir=/home/xs107-bairoy/xenonstack/l2/module4/spark/project/project"
+                    "-Duser.dir=/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/project"
                 ]
             },
             "mainClass": [

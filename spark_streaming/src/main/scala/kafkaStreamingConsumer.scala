@@ -11,6 +11,7 @@ import org.apache.spark.storage.StorageLevel
 import org.apache.spark._
 import org.apache.spark.streaming._
 import org.apache.spark.sql.streaming.Trigger
+import org.apache.spark.sql.expressions.Window
 
 /*
 import org.apache.hadoop.io.LongWritable
@@ -67,9 +68,7 @@ class sparkStreamng {
     transactionDFCounts
                 .selectExpr("CAST(topic AS STRING)", "CAST(value AS STRING)", "CAST(timestamp AS STRING)")
                 .writeStream
-                .format("kafka")
-                .option("kafka.bootstrap.servers", kafkaServer)
-                .option("topic", kafkaTopicName)
+                .format("console")
                 .trigger(Trigger.ProcessingTime("1 seconds"))
                 .outputMode("update")
                 .foreachBatch(streamingFunction _)
@@ -79,6 +78,25 @@ class sparkStreamng {
     spark.close()
     
   }
+  def streamingFunctionCSV(batchDf: DataFrame, batchId: Long): Unit = {
+        println("\n\n\t\tBATCH "+batchId+"\n\n")
+        //batchDf.show(false)
+        val month = Window.partitionBy("dob_month")
+
+        val agg_sal = batchDf
+                .withColumn("max_salary", max("salary").over(month))
+                .withColumn("min_salary", min("salary").over(month))
+                
+
+        agg_sal.select("depname", "max_salary", "min_salary")
+                .dropDuplicates()
+                .show(false)
+/*
+        batchDf
+                .groupBy("timestamp")
+                .agg(avg("salary"))
+                .show(false)*/
+    }
   def kafkaConsumeCSV(kafkaTopicName: String = "test-events", kafkaServer: String = "localhost:9092"): Unit = {
     val conf = new SparkConf().setAppName("KAFKA").setMaster("local");
     val sc = new SparkContext(conf)
@@ -103,28 +121,20 @@ class sparkStreamng {
 
     println("Printing Schema of transactionDF: ")
     transactionDF.printSchema()
-    
-    
-    /**
-      * Lamda Function
-      */
-      /*
-    transactionDF.writeStream.foreachBatch((batchDf: DataFrame, batchId: Long) => {
-        batchDf.show(false)
-    }).start().awaitTermination()*/
+
     val transactionDFCounts = transactionDF
               .withWatermark("timestamp", "10 minutes")
-              .groupBy(window($"timestamp", "10 minutes", "5 minutes"),$"value")
-              .count()
+              //.groupBy(window($"timestamp", "10 minutes", "5 minutes"),$"value")
+              //.count()
     
 
     transactionDFCounts
-                .selectExpr("CAST(topic AS STRING)", "CAST(value AS STRING)", "CAST(timestamp AS STRING)")
+                .selectExpr("CAST(value AS STRING)")
                 .writeStream
                 .format("console")
                 .trigger(Trigger.ProcessingTime("1 seconds"))
                 .outputMode("update")
-                .foreachBatch(streamingFunction _)
+                .foreachBatch(streamingFunctionCSV _)
                 .option("checkpointLocation","/tmp/spark/kafkaStreamingConsumer")
                 .start()
                 .awaitTermination()
@@ -140,7 +150,7 @@ object kafkaStreamingConsumer {
   def main(args: Array[String]): Unit = {
     println("\n\n\t\tKafka Consumer Application Started ...\n\n")
     val sS = new sparkStreamng
-    sS.kafkaConsume()
+    sS.kafkaConsumeCSV()
     println("\n\n\t\tKafka Consumer Application Completed ...\n\n")
   }
 }

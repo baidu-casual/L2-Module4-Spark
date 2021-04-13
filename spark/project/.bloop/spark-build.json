@@ -2,15 +2,15 @@
     "version": "1.4.0",
     "project": {
         "name": "spark-build",
-        "directory": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project",
-        "workspaceDir": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project",
+        "directory": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project",
+        "workspaceDir": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project",
         "sources": [
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/src/main/scala",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/src/main/scala-2.12",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/src/main/scala-2",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/src/main/java",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/src/main/scala-sbt-1.0",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/target/scala-2.12/sbt-1.0/src_managed/main"
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/src/main/scala",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/src/main/scala-2.12",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/src/main/scala-2",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/src/main/java",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/src/main/scala-sbt-1.0",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/target/scala-2.12/sbt-1.0/src_managed/main"
         ],
         "dependencies": [
             
@@ -226,11 +226,11 @@
             "/home/xs107-bairoy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/eclipse/jetty/jetty-http/9.2.21.v20170120/jetty-http-9.2.21.v20170120.jar",
             "/home/xs107-bairoy/.cache/coursier/v1/https/repo1.maven.org/maven2/org/eclipse/jetty/jetty-io/9.2.21.v20170120/jetty-io-9.2.21.v20170120.jar"
         ],
-        "out": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/.bloop/spark-build",
-        "classesDir": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/.bloop/spark-build/scala-2.12/sbt-1.0/classes",
+        "out": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/.bloop/spark-build",
+        "classesDir": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/.bloop/spark-build/scala-2.12/sbt-1.0/classes",
         "resources": [
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/src/main/resources",
-            "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/target/scala-2.12/sbt-1.0/resource_managed/main"
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/src/main/resources",
+            "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/target/scala-2.12/sbt-1.0/resource_managed/main"
         ],
         "scala": {
             "organization": "org.scala-lang",
@@ -246,7 +246,7 @@
                 "/home/xs107-bairoy/.sbt/boot/scala-2.12.13/lib/scala-xml_2.12-1.0.6.jar",
                 "/home/xs107-bairoy/.sbt/boot/scala-2.12.13/lib/scala-compiler.jar"
             ],
-            "analysis": "/home/xs107-bairoy/xenonstack/l2/module4/spark/project/target/streams/compile/bloopAnalysisOut/_global/streams/inc_compile_2.12.zip",
+            "analysis": "/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project/target/streams/compile/bloopAnalysisOut/_global/streams/inc_compile_2.12.zip",
             "setup": {
                 "order": "mixed",
                 "addLibraryToBootClasspath": true,
@@ -321,7 +321,7 @@
             "config": {
                 "home": "/home/xs107-bairoy/binaries/jdk-11.0.10+9",
                 "options": [
-                    "-Duser.dir=/home/xs107-bairoy/xenonstack/l2/module4/spark/project"
+                    "-Duser.dir=/home/xs107-bairoy/baidu/L2-Module4-Spark/spark/project"
                 ]
             },
             "mainClass": [

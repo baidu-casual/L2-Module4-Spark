@@ -27,7 +27,7 @@ class sparkStreamng{
         println("\n\n\t\tBATCH "+batchId+"\n\n")
         batchDf.show(false)
   }
-  def kafkaConsume(kafkaTopicName: String = "test-events", kafkaServer: String = "localhost:9092"): Unit = {
+  def kafkaProduce(kafkaTopicName: String = "test-events", kafkaServer: String = "localhost:9092"): Unit = {
     val conf = new SparkConf().setAppName("KAFKA").setMaster("local");
     val sc = new SparkContext(conf)
     sc.setLogLevel("ERROR")
@@ -151,7 +151,7 @@ object kafkaStreamingProducer {
   def main(args: Array[String]): Unit = {
     println("\n\n\t\tKafka Producer Application Started ...\n\n")
     val sS = new sparkStreamng
-    sS.kafkaConsume()
+    sS.kafkaProduce()
     //sS.temp()
     println("\n\n\t\tKafka Producer Application Completed ...\n\n")
   }  
