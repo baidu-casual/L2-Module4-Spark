@@ -1,0 +1,5 @@
+11,4,1,"rectangle","short","not_double","none",2,"rectangle",1
+12,4,2,"ellipse","short","not_double","arc",2,"diamond",1
+13,4,3,"rectangle","short","double","none",2,"triangle",1
+14,4,4,"bucket","short","not_double","none",2,"triangle",1
+15,5,1,"rectangle","short","not_double","flat",2,"circle",1

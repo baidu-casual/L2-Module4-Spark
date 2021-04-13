@@ -1,0 +1,9 @@
+https://docs.microsoft.com/en-us/azure/databricks/spark/latest/structured-streaming/
+https://spark.apache.org/docs/2.3.0/sql-programming-guide.html#loading-data-programmatically
+https://spark.apache.org/docs/2.1.2/structured-streaming-programming-guide.html#:~:text=Streaming%20DataFrames%20can%20be%20created,%2C%20schema%2C%20options%2C%20etc.
+https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html
+https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html#deploying
+https://spark.apache.org/docs/latest/submitting-applications.html
+https://spark.apache.org/docs/latest/submitting-applications.html
+https://www.confluent.io/blog/kafka-scala-tutorial-for-beginners/
+https://github.com/indiacloudtv/structuredstreamingkafkascala.git

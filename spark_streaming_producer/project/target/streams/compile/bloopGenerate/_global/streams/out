@@ -1,0 +1,4 @@
+[0m[[0m[0mdebug[0m] [0m[0m[spark_streaming_producer-build] Classpath dependencies List()[0m
+[0m[[0m[0mdebug[0m] [0m[0m[spark_streaming_producer-build] Dependencies from configurations List()[0m
+[0m[[0m[0mdebug[0m] [0m[0mBloop wrote the configuration of project 'spark_streaming_producer-build' to '/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming_producer/project/.bloop/spark_streaming_producer-build.json'[0m
+[0m[[0m[32msuccess[0m] [0m[0mGenerated .bloop/spark_streaming_producer-build.json[0m

@@ -1,0 +1,40 @@
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:4:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.{SparkContext,SparkConf}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:5:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.sql.{Dataset, DataFrame, SparkSession}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:6:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.sql.functions._[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:7:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.sql._[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:8:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.sql.types._[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:9:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.SparkContext._[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:10:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.storage.StorageLevel[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:11:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark._[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:12:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.streaming._[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:13:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.sql.streaming.Trigger[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:25:20: not found: type SparkConf[0m
+[0m[[0m[31merror[0m] [0m[0m    val conf = new SparkConf().setAppName("Spark4").setMaster("local");[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:26:18: not found: type SparkContext[0m
+[0m[[0m[31merror[0m] [0m[0m    val sc = new SparkContext(conf)[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming/src/main/scala/kafka_streaming.scala:28:17: not found: value SparkSession[0m
+[0m[[0m[31merror[0m] [0m[0m    val spark = SparkSession[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0m13 errors found[0m

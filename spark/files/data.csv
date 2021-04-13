@@ -1,0 +1,11 @@
+id,parent_id,number,order_key,created_via,version,status,currency,date_created,date_modified,discount_total,discount_tax,shipping_total,shipping_tax,cart_tax,total,total_tax
+294,0,294,wc_order_zY20WNJVwkia8,checkout,4.2.0,processing,INR,2020-11-01T01:29:47,2020-11-01T01:29:47,0,0,0,0,0,34.5,0
+293,0,293,wc_order_zH2cA7zBZpLpV,checkout,4.2.0,processing,INR,2020-11-01T01:29:43,2020-11-01T01:29:43,0,0,0,0,0,34.5,0
+292,0,292,wc_order_SO0HVV2tKyTYO,checkout,4.2.0,processing,INR,2020-10-27T06:29:38,2020-10-27T06:29:38,0,0,0,0,0,34.5,0
+291,0,291,wc_order_GJogRJRWd6jLZ,checkout,4.2.0,processing,INR,2020-10-27T06:21:45,2020-10-27T06:21:45,0,0,0,0,0,34.5,0
+286,0,286,wc_order_63qiXq6Dt7Nr8,rest-api,4.2.0,pending,INR,2020-08-17T12:07:19,2020-08-17T12:07:19,0,0,10,0,0,20,0
+285,0,285,wc_order_QfFFcf7v40dw9,rest-api,4.2.0,pending,INR,2020-08-17T11:07:25,2020-08-17T11:07:25,0,0,10,0,0,24010,0
+284,0,284,wc_order_Wkebz20Os28Cp,rest-api,4.2.0,pending,INR,2020-08-17T11:07:04,2020-08-17T11:07:04,0,0,10,0,0,24010,0
+283,0,283,wc_order_4SJR4nNzEUB1T,rest-api,4.2.0,pending,INR,2020-08-17T10:10:44,2020-08-17T10:10:44,0,0,10,0,0,24010,0
+282,0,282,wc_order_edoNeXcbHM9mk,rest-api,4.2.0,pending,INR,2020-08-17T09:16:33,2020-08-17T09:16:33,0,0,10,0,0,30,0
+279,0,279,wc_order_HikUUuLnKs57w,rest-api,4.2.0,pending,INR,2020-07-29T06:00:30,2020-07-29T06:00:30,0,0,10,0,0,16,0

@@ -1,0 +1,22 @@
+{
+  "continent": "Europe",
+  "country": {
+    "city": {
+      "bag": [
+        {
+          "array_element": "Paris"
+        },
+        {
+          "array_element": "Nice"
+        },
+        {
+          "array_element": "Marseilles"
+        },
+        {
+          "array_element": "Cannes"
+        }
+      ]
+    },
+    "name": "France"
+  }
+}

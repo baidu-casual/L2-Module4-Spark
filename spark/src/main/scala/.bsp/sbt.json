@@ -1,0 +1,1 @@
+{"name":"sbt","version":"1.5.0","bspVersion":"2.0.0-M5","languages":["scala"],"argv":["/home/xs107-bairoy/Downloads/jdk-11.0.10+9/bin/java","-Xms100m","-Xmx100m","-classpath","/home/xs107-bairoy/Downloads/sbt-1.5.0/sbt/bin/sbt-launch.jar","xsbt.boot.Boot","-bsp","--sbt-launch-jar=/home/xs107-bairoy/Downloads/sbt-1.5.0/sbt/bin/sbt-launch.jar"]}

@@ -1,0 +1,5 @@
+21,6,4,"rectangle","long","not_double","jagged",2,"rectangle",0
+22,7,1,"rectangle","long","not_double","none",2,"hexagon",1
+23,7,2,"rectangle","short","not_double","none",2,"rectangle",1
+24,7,3,"rectangle","short","not_double","flat",2,"triangle",1
+25,8,1,"rectangle","short","not_double","peaked",2,"rectangle",1
