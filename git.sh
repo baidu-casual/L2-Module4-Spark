@@ -7,8 +7,9 @@ else
     mess="$*"
 fi
 
+git status
 git add .
 echo "Message: $mess"
 git commit -m "$mess"
-git push -u origin master
+git push -u origin feature
 git pull

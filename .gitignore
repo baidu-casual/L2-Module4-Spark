@@ -1,0 +1,15 @@
+spark/.vscode/
+spark/.metals/
+spark/.bsp/
+spark/.bloop/
+spark/target/
+spark_streaming/.vscode/
+spark_streaming/.metals/
+spark_streaming/.bsp/
+spark_streaming/.bloop/
+spark_streaming/target/
+spark_streaming_producer/.vscode/
+spark_streaming_producer/.metals/
+spark_streaming_producer/.bsp/
+spark_streaming_producer/.bloop/
+spark_streaming_producer/target/
