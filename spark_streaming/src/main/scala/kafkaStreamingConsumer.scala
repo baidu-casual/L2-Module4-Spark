@@ -80,8 +80,18 @@ class sparkStreamng {
   }
   def streamingFunctionCSV(batchDf: DataFrame, batchId: Long): Unit = {
         println("\n\n\t\tBATCH "+batchId+"\n\n")
+
         //batchDf.show(false)
-        val month = Window.partitionBy("dob_month")
+
+        val df=batchDf.persist(StorageLevel.MEMORY_ONLY)
+        println("Hello World")
+        df.write.format("csv")
+                .mode("overwrite")
+                .option("sep",',')
+                .csv("/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/output.csv")
+
+        /*
+        val month = Window.partitionBy("timestamp")
 
         val agg_sal = batchDf
                 .withColumn("max_salary", max("salary").over(month))
@@ -91,7 +101,7 @@ class sparkStreamng {
         agg_sal.select("depname", "max_salary", "min_salary")
                 .dropDuplicates()
                 .show(false)
-/*
+
         batchDf
                 .groupBy("timestamp")
                 .agg(avg("salary"))
@@ -129,7 +139,7 @@ class sparkStreamng {
     
 
     transactionDFCounts
-                .selectExpr("CAST(value AS STRING)")
+                //.selectExpr("CAST(value AS STRING)")
                 .writeStream
                 .format("console")
                 .trigger(Trigger.ProcessingTime("1 seconds"))
