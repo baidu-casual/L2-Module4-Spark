@@ -81,14 +81,14 @@ class sparkStreamng {
   def streamingFunctionCSV(batchDf: DataFrame, batchId: Long): Unit = {
         println("\n\n\t\tBATCH "+batchId+"\n\n")
 
-        //batchDf.show(false)
+        batchDf.show(false)
 
         val df=batchDf.persist(StorageLevel.MEMORY_ONLY)
         println("Hello World")
-        df.write.format("csv")
-                .mode("overwrite")
+        df.write.format("json")
+                .mode("append")
                 .option("sep",',')
-                .csv("/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/output.csv")
+                .json("/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/output.json")
 
         /*
         val month = Window.partitionBy("timestamp")
@@ -139,9 +139,9 @@ class sparkStreamng {
     
 
     transactionDFCounts
-                //.selectExpr("CAST(value AS STRING)")
+                .selectExpr("CAST(value AS STRING)")
                 .writeStream
-                .format("console")
+                .format("json")
                 .trigger(Trigger.ProcessingTime("1 seconds"))
                 .outputMode("update")
                 .foreachBatch(streamingFunctionCSV _)
@@ -164,18 +164,3 @@ object kafkaStreamingConsumer {
     println("\n\n\t\tKafka Consumer Application Completed ...\n\n")
   }
 }
-
-
-
-/**
-  * val trans_detail_write_stream_1 = transactionDF5
-  .selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
-  .writeStream
-  .format("kafka")
-  .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS_CONS)
-  .option("topic", KAFKA_OUTPUT_TOPIC_NAME_CONS)
-  .trigger(Trigger.ProcessingTime("1 seconds"))
-  .outputMode("update")
-  .option("checkpointLocation", "/tmp/sparkCheckpoint/checkpoint")      // ---------checkpoint used----------
-  .start()
-  */
