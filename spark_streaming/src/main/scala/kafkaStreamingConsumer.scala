@@ -84,12 +84,45 @@ class sparkStreamng {
         batchDf.show(false)
 
         val df=batchDf.persist(StorageLevel.MEMORY_ONLY)
-        println("Hello World")
-        df.write.format("json")
+
+        val schema = new StructType()
+                                .add("id",IntegerType,false)
+                                .add("name",StringType, false)
+                                .add("dob_year",IntegerType, true)
+                                .add("dob_month",IntegerType, true)
+                                .add("gender",StringType, true)
+                                .add("salary",IntegerType, true)
+        val schema1 =ArrayType(schema)
+
+        println("\n\n\t\tWriting to JSON...")
+        val pathJSON="/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/json/"
+        /*val df1 = df.toDF("id","name","dob_year","dob_month","gender","salary")
+        df1.show(false)*/
+        df.coalesce(1)
+                .write
+                .format("json")
                 .mode("append")
                 .option("sep",',')
-                .json("/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/output.json")
+                .option("header",false)
+                .json(pathJSON)
+        println("\n\n\tWrite Successful...")
 
+        println("\n\n\t\tWriting to CSV...")
+        val pathCSV="/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/csv/"
+        df.coalesce(1)
+                .write
+                .format("csv")
+                .mode("append")
+                .option("sep",',')
+                .csv(pathCSV)
+        println("\n\n\tWrite Successful...")
+
+        println("\n\n\t\tWriting to parquet...")
+        df.write.format("parquet")
+                .mode("append")
+                .option("sep",',')
+                .parquet("/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/parquet/")
+        println("\n\n\tWrite Successful...")
         /*
         val month = Window.partitionBy("timestamp")
 
