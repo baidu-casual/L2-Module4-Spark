@@ -3,6 +3,7 @@ spark/.metals/
 spark/.bsp/
 spark/.bloop/
 spark/target/
+spark_streaming/output
 spark_streaming/.vscode/
 spark_streaming/.metals/
 spark_streaming/.bsp/
