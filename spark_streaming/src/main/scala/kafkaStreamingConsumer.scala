@@ -12,6 +12,7 @@ import org.apache.spark._
 import org.apache.spark.streaming._
 import org.apache.spark.sql.streaming.Trigger
 import org.apache.spark.sql.expressions.Window
+import org.apache.spark.sql.functions.{col, from_json,to_json,struct}
 
 /*
 import org.apache.hadoop.io.LongWritable
@@ -79,20 +80,42 @@ class sparkStreamng {
     
   }
   def streamingFunctionCSV(batchDf: DataFrame, batchId: Long): Unit = {
+      val conf = new SparkConf().setAppName("KAFKA sfsa").setMaster("local");
+      val spark = SparkSession
+                    .builder()
+                    .master("local[*]")
+                    .appName("KAFKA sfsa")
+                    .config(conf)
+                    .getOrCreate()
+      spark.sparkContext.setLogLevel("ERROR")
+      import spark.implicits._
+
+
         println("\n\n\t\tBATCH "+batchId+"\n\n")
-
+        
         batchDf.show(false)
-
-        val df=batchDf.persist(StorageLevel.MEMORY_ONLY)
-
         val schema = new StructType()
-                                .add("id",IntegerType,false)
-                                .add("name",StringType, false)
-                                .add("dob_year",IntegerType, true)
-                                .add("dob_month",IntegerType, true)
-                                .add("gender",StringType, true)
-                                .add("salary",IntegerType, true)
-        val schema1 =ArrayType(schema)
+                      .add("id",IntegerType,false)
+                      .add("name",StringType, false)
+                      .add("dob_year",IntegerType, true)
+                      .add("dob_month",IntegerType, true)
+                      .add("gender",StringType, true)
+                      .add("salary",IntegerType, true)
+        // val peopleDF = batchDf.select(from_json(col("value"), schema) as("value"))
+        //                       .withColumn("person_explode",explode(col("value")))
+        //                       .select("person_explode.*")
+        // peopleDF.printSchema()
+        // peopleDF.show(false)
+
+
+        val windowSpec  = Window.partitionBy("timestamp").orderBy("timestamp")
+        val rankTimestamp = batchDf.withColumn("rank",row_number.over(windowSpec))
+        rankTimestamp.show(false)
+        rankTimestamp.createOrReplaceTempView("rankTimestamp")
+        spark.sql("SELECT * FROM rankTimestamp where rank<2").show(false)
+
+        
+        val df=batchDf.persist(StorageLevel.MEMORY_ONLY)
 
         println("\n\n\t\tWriting to JSON...")
         val pathJSON="/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/json/"
@@ -167,12 +190,19 @@ class sparkStreamng {
 
     val transactionDFCounts = transactionDF
               .withWatermark("timestamp", "10 minutes")
-              //.groupBy(window($"timestamp", "10 minutes", "5 minutes"),$"value")
+              //.groupBy(window($"timestamp", "10 minutes"),$"value")
               //.count()
+    // val transactionDFCounts1 = transactionDFCounts
+    //           .groupBy(window($"timestamp", "10 minutes"))
+    //           .count()
+    // transactionDFCounts1.writeStream
+    //                     .format("console")
+    //                     .outputMode("update")
+    //                     .start()
     
 
     transactionDFCounts
-                .selectExpr("CAST(value AS STRING)")
+                .selectExpr("CAST(value AS STRING)", "timestamp")
                 .writeStream
                 .format("json")
                 .trigger(Trigger.ProcessingTime("1 seconds"))
