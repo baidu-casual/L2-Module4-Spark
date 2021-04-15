@@ -22,3 +22,5 @@ libraryDependencies += "org.apache.spark" %% "spark-streaming-kafka-0-10" % "3.1
 
 // https://mvnrepository.com/artifact/org.apache.spark/spark-avro
 libraryDependencies += "org.apache.spark" %% "spark-avro" % "3.1.1"
+
+libraryDependencies += "io.delta" %% "delta-core" % "0.8.0"

@@ -69,9 +69,7 @@ class sparkStreamng{
     //val temp=spark.sql("select * from value")
     
     val peopleDF = people.selectExpr("struct(*) AS value")
-      //.select(from_json(col("value"), schema))
-      //.withColumn("person_explode",explode(col("value")))
-      //.select("value.*")
+      .select(to_json(col("value")) as("value"))
     peopleDF.printSchema()
 
     peopleDF

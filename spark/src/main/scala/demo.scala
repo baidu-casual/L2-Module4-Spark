@@ -424,7 +424,8 @@ class spark extends institute{
     val path="/home/xs107-bairoy/xenonstack/l2/module4/spark_streaming_producer/files/person/"+filename
     val file = new File(path)
     val bw = new BufferedWriter(new FileWriter(file))
-    var json="[\n"
+    // var json="[\n"
+    var json=""
     for ( a <- 3 to 100){
     val temp = Map(
       "id" -> Random.nextInt(10000),
@@ -435,12 +436,12 @@ class spark extends institute{
       "salary" -> Random.nextInt(9999999)
     )
     var jsonBoolean = JSONObject(temp).toString()
-    if (a<=99){
-      jsonBoolean+=",\n"
-    }    
-    json+=jsonBoolean
+    // if (a<=99){
+    //   jsonBoolean+=",\n"
+    // }    
+    json+=(jsonBoolean+"\n")
     }
-    json+="\n]"
+    // json+="\n]"
     bw.write(json)
     println(json)
     bw.close()    

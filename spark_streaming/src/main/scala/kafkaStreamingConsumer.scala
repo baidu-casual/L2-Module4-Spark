@@ -23,9 +23,17 @@ import org.apache.spark.rdd.RDD
 */
 
 class sparkStreamng {
-  def streamingFunction(batchDf: DataFrame, batchId: Long): Unit = {
+  def streamingFunctionDelta(batchDf: DataFrame, batchId: Long): Unit = {
         println("\n\n\t\tBATCH "+batchId+"\n\n")
         batchDf.show(false)
+
+        batchDf.write.format("delta").mode("append").save("/mnt/delta/events")
+        batchDf.write.format("delta").mode("append").saveAsTable("events")
+
+        // import io.delta.implicits._
+        // batchDf.write.mode("append").delta("/mnt/delta/events")
+
+
     }
   def kafkaConsume(kafkaTopicName: String = "test-events", kafkaServer: String = "localhost:9092"): Unit = {
     val conf = new SparkConf().setAppName("KAFKA").setMaster("local");
@@ -72,7 +80,7 @@ class sparkStreamng {
                 .format("console")
                 .trigger(Trigger.ProcessingTime("1 seconds"))
                 .outputMode("update")
-                .foreachBatch(streamingFunction _)
+                .foreachBatch(streamingFunctionDelta _)
                 .option("checkpointLocation","/tmp/spark/kafkaStreamingConsumer")
                 .start()
                 .awaitTermination()
@@ -94,18 +102,18 @@ class sparkStreamng {
         println("\n\n\t\tBATCH "+batchId+"\n\n")
         
         batchDf.show(false)
-        val schema = new StructType()
+        val schema = ArrayType(new StructType()
                       .add("id",IntegerType,false)
                       .add("name",StringType, false)
                       .add("dob_year",IntegerType, true)
                       .add("dob_month",IntegerType, true)
                       .add("gender",StringType, true)
-                      .add("salary",IntegerType, true)
-        // val peopleDF = batchDf.select(from_json(col("value"), schema) as("value"))
-        //                       .withColumn("person_explode",explode(col("value")))
-        //                       .select("person_explode.*")
-        // peopleDF.printSchema()
-        // peopleDF.show(false)
+                      .add("salary",IntegerType, true))
+        val peopleDF = batchDf.select(from_json(col("value"), schema) as("value"))
+                              .withColumn("person_explode",explode(col("value")))
+                              .select("person_explode.*")
+        peopleDF.printSchema()
+        peopleDF.show(false)
 
 
         val windowSpec  = Window.partitionBy("timestamp").orderBy("timestamp")
