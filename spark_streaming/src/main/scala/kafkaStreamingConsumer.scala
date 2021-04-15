@@ -23,7 +23,7 @@ import org.apache.spark.rdd.RDD
 */
 
 class sparkStreamng {
-  def streamingFunctionDelta(batchDf: DataFrame, batchId: Long): Unit = {
+  def streamingFunctionTest(batchDf: DataFrame, batchId: Long): Unit = {
         println("\n\n\t\tBATCH "+batchId+"\n\n")
         batchDf.show(false)
 
@@ -35,7 +35,7 @@ class sparkStreamng {
 
 
     }
-  def kafkaConsume(kafkaTopicName: String = "test-events", kafkaServer: String = "localhost:9092"): Unit = {
+  def kafkaConsumeTest(kafkaTopicName: String = "test-events", kafkaServer: String = "localhost:9092"): Unit = {
     val conf = new SparkConf().setAppName("KAFKA").setMaster("local");
     val sc = new SparkContext(conf)
     sc.setLogLevel("ERROR")
@@ -80,14 +80,14 @@ class sparkStreamng {
                 .format("console")
                 .trigger(Trigger.ProcessingTime("1 seconds"))
                 .outputMode("update")
-                .foreachBatch(streamingFunctionDelta _)
+                .foreachBatch(streamingFunctionTest _)
                 .option("checkpointLocation","/tmp/spark/kafkaStreamingConsumer")
                 .start()
                 .awaitTermination()
     spark.close()
     
   }
-  def streamingFunctionCSV(batchDf: DataFrame, batchId: Long): Unit = {
+  def streamingFunction(batchDf: DataFrame, batchId: Long): Unit = {
       val conf = new SparkConf().setAppName("KAFKA sfsa").setMaster("local");
       val spark = SparkSession
                     .builder()
@@ -171,7 +171,7 @@ class sparkStreamng {
                 .agg(avg("salary"))
                 .show(false)*/
     }
-  def kafkaConsumeCSV(kafkaTopicName: String = "test-events", kafkaServer: String = "localhost:9092"): Unit = {
+  def kafkaConsume(kafkaTopicName: String = "test-events", kafkaServer: String = "localhost:9092"): Unit = {
     val conf = new SparkConf().setAppName("KAFKA").setMaster("local");
     val sc = new SparkContext(conf)
     sc.setLogLevel("ERROR")
@@ -215,7 +215,7 @@ class sparkStreamng {
                 .format("json")
                 .trigger(Trigger.ProcessingTime("1 seconds"))
                 .outputMode("update")
-                .foreachBatch(streamingFunctionCSV _)
+                .foreachBatch(streamingFunction _)
                 .option("checkpointLocation","/tmp/spark/kafkaStreamingConsumer")
                 .start()
                 .awaitTermination()
@@ -231,7 +231,7 @@ object kafkaStreamingConsumer {
   def main(args: Array[String]): Unit = {
     println("\n\n\t\tKafka Consumer Application Started ...\n\n")
     val sS = new sparkStreamng
-    sS.kafkaConsumeCSV()
+    sS.kafkaConsume()
     println("\n\n\t\tKafka Consumer Application Completed ...\n\n")
   }
 }
