@@ -26,8 +26,8 @@ libraryDependencies += "org.apache.spark" %% "spark-avro" % "3.1.1"
 // https://mvnrepository.com/artifact/io.delta/delta-core
 libraryDependencies += "io.delta" %% "delta-core" % "0.8.0"
 
-libraryDependencies ++= Seq(
-  "org.apache.hadoop" % "hadoop-client" % "2.7.2",
-  "org.apache.parquet" % "parquet-hadoop" % "1.10.1",
-  "io.delta" %% "delta-standalone" % "0.2.0"
-)
+// libraryDependencies ++= Seq(
+//   "org.apache.hadoop" % "hadoop-client" % "2.7.2",
+//   "org.apache.parquet" % "parquet-hadoop" % "1.10.1",
+//   "io.delta" %% "delta-standalone" % "0.2.0"
+// )

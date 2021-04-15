@@ -9,6 +9,7 @@ spark_streaming/.metals/
 spark_streaming/.bsp/
 spark_streaming/.bloop/
 spark_streaming/target/
+spark_streaming/output/delta
 spark_streaming_producer/.vscode/
 spark_streaming_producer/.metals/
 spark_streaming_producer/.bsp/

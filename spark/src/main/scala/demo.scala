@@ -22,6 +22,7 @@ import org.apache.spark.rdd.RDD
 import scala.util.Random
 import scala.util.parsing.json.JSONObject
 import java.io._
+import java.time._
 
 
 class institute
@@ -481,7 +482,10 @@ object demo extends institute {
     //institute1.temp4()
     //institute1.temp5()
     //institute1.broadcastJoins()
-    institute1.temp6()
+    for(a <- 1 to 20){
+      institute1.temp6()
+      Thread.sleep(9000)
+    }
   }
 }
 /**

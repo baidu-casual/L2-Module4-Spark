@@ -1,5 +1,6 @@
 package main
 
+import io.delta.tables._
 
 import org.apache.spark.{SparkContext,SparkConf}
 import org.apache.spark.sql.{Dataset, DataFrame, SparkSession}
@@ -14,6 +15,7 @@ import org.apache.spark.sql.streaming.Trigger
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions.{col, from_json,to_json,struct}
 
+
 /*
 import org.apache.hadoop.io.LongWritable
 import org.apache.hadoop.io.Text
@@ -25,12 +27,8 @@ import org.apache.spark.rdd.RDD
 class sparkStreamng {
   def streamingFunctionTest(batchDf: DataFrame, batchId: Long): Unit = {
         println("\n\n\t\tBATCH "+batchId+"\n\n")
-        batchDf.show(false)
-
-        val pathDELTA="/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/delta/people"
-
-        batchDf.write.format("delta").mode("append").save(pathDELTA)
-        batchDf.write.format("delta").mode("append").saveAsTable("events")
+        batchDf.show(false)        
+        //batchDf.write.format("delta").mode("append").saveAsTable("events")
 
         // import io.delta.implicits._
         // batchDf.write.mode("append").delta("/mnt/delta/events")
@@ -116,6 +114,9 @@ class sparkStreamng {
                               .select("person_explode.*")
         peopleDF.printSchema()
         peopleDF.show(false)
+
+        val pathDELTA="/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/delta/people"
+        peopleDF.write.format("delta").mode("append").save(pathDELTA)
 
 
         val windowSpec  = Window.partitionBy("timestamp").orderBy("timestamp")
