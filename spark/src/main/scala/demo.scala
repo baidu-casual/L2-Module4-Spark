@@ -426,7 +426,7 @@ class spark extends institute{
     val bw = new BufferedWriter(new FileWriter(file))
     // var json="[\n"
     var json=""
-    for ( a <- 3 to 100){
+    for ( a <- 1 to 200){
     val temp = Map(
       "id" -> Random.nextInt(10000),
       "name" -> Random.nextString(10),

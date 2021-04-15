@@ -27,7 +27,9 @@ class sparkStreamng {
         println("\n\n\t\tBATCH "+batchId+"\n\n")
         batchDf.show(false)
 
-        batchDf.write.format("delta").mode("append").save("/mnt/delta/events")
+        val pathDELTA="/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/delta/people"
+
+        batchDf.write.format("delta").mode("append").save(pathDELTA)
         batchDf.write.format("delta").mode("append").saveAsTable("events")
 
         // import io.delta.implicits._
@@ -88,11 +90,11 @@ class sparkStreamng {
     
   }
   def streamingFunction(batchDf: DataFrame, batchId: Long): Unit = {
-      val conf = new SparkConf().setAppName("KAFKA sfsa").setMaster("local");
+      val conf = new SparkConf().setAppName("KAFKA Consumer").setMaster("local");
       val spark = SparkSession
                     .builder()
                     .master("local[*]")
-                    .appName("KAFKA sfsa")
+                    .appName("KAFKA Consumer")
                     .config(conf)
                     .getOrCreate()
       spark.sparkContext.setLogLevel("ERROR")
