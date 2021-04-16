@@ -87,6 +87,10 @@ class sparkStreamng {
     spark.close()
     
   }
+  def deltaFunction(deltaDf: DataFrame): Unit = {
+      val pathDELTA="/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/delta/people"
+      deltaDf.write.format("delta").mode("append").save(pathDELTA)
+  }
   def streamingFunction(batchDf: DataFrame, batchId: Long): Unit = {
       val conf = new SparkConf().setAppName("KAFKA Consumer").setMaster("local");
       val spark = SparkSession
@@ -109,24 +113,23 @@ class sparkStreamng {
                       .add("dob_month",IntegerType, true)
                       .add("gender",StringType, true)
                       .add("salary",IntegerType, true))
-        val peopleDF = batchDf.select(from_json(col("value"), schema) as("value"))
+        val peopleDF = batchDf.select((from_json(col("value"), schema) as("value")), $"timestamp")
                               .withColumn("person_explode",explode(col("value")))
-                              .select("person_explode.*")
+                              .select("person_explode.*", "timestamp")
         peopleDF.printSchema()
         peopleDF.show(false)
 
-        val pathDELTA="/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/delta/people"
-        peopleDF.write.format("delta").mode("append").save(pathDELTA)
+        deltaFunction(peopleDF) //Upload to Delta Lake
 
 
         val windowSpec  = Window.partitionBy("timestamp").orderBy("timestamp")
-        val rankTimestamp = batchDf.withColumn("rank",row_number.over(windowSpec))
+        val rankTimestamp = peopleDF.withColumn("rank",row_number.over(windowSpec))
         rankTimestamp.show(false)
         rankTimestamp.createOrReplaceTempView("rankTimestamp")
         spark.sql("SELECT * FROM rankTimestamp where rank<2").show(false)
 
         
-        val df=batchDf.persist(StorageLevel.MEMORY_ONLY)
+        val df=peopleDF.persist(StorageLevel.MEMORY_ONLY)
 
         println("\n\n\t\tWriting to JSON...")
         val pathJSON="/home/xs107-bairoy/baidu/L2-Module4-Spark/spark_streaming/output/json/"

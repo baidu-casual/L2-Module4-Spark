@@ -484,7 +484,7 @@ object demo extends institute {
     //institute1.broadcastJoins()
     for(a <- 1 to 20){
       institute1.temp6()
-      Thread.sleep(9000)
+      Thread.sleep(3000)
     }
   }
 }
