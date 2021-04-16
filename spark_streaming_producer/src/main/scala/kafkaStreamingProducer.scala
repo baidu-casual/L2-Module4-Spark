@@ -22,8 +22,8 @@ import java.nio.file.{Files, Paths}
 
 
 
-class sparkStreamng{
-  def streamingFunction(batchDf: DataFrame, batchId: Long): Unit = {
+class Producer{
+  def streamingFunctionTest(batchDf: DataFrame, batchId: Long): Unit = {
         println("\n\n\t\tBATCH "+batchId+"\n\n")
         batchDf.show(false)
   }
@@ -80,7 +80,7 @@ class sparkStreamng{
           .option("topic", kafkaTopicName)
           //.trigger(Trigger.ProcessingTime("30 seconds"))
           .outputMode("append")
-          //.foreachBatch(streamingFunction _)
+          //.foreachBatch(streamingFunctionTest _)
           .option("checkpointLocation","/tmp/spark")
           .start()
           .awaitTermination()
@@ -148,7 +148,7 @@ class sparkStreamng{
 object kafkaStreamingProducer {  
   def main(args: Array[String]): Unit = {
     println("\n\n\t\tKafka Producer Application Started ...\n\n")
-    val sS = new sparkStreamng
+    val sS = new Producer
     sS.kafkaProduce()
     //sS.temp()
     println("\n\n\t\tKafka Producer Application Completed ...\n\n")

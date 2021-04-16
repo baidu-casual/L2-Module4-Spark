@@ -24,7 +24,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat
 import org.apache.spark.rdd.RDD
 */
 
-class sparkStreamng {
+class Consumer {
   def streamingFunctionTest(batchDf: DataFrame, batchId: Long): Unit = {
         println("\n\n\t\tBATCH "+batchId+"\n\n")
         batchDf.show(false)        
@@ -92,11 +92,11 @@ class sparkStreamng {
       deltaDf.write.format("delta").mode("append").save(pathDELTA)
   }
   def streamingFunction(batchDf: DataFrame, batchId: Long): Unit = {
-      val conf = new SparkConf().setAppName("KAFKA Consumer").setMaster("local");
+      val conf = new SparkConf().setAppName("KAFKA Streaming Function").setMaster("local");
       val spark = SparkSession
                     .builder()
                     .master("local[*]")
-                    .appName("KAFKA Consumer")
+                    .appName("KAFKA Streaming Function")
                     .config(conf)
                     .getOrCreate()
       spark.sparkContext.setLogLevel("ERROR")
@@ -236,7 +236,7 @@ class sparkStreamng {
 object kafkaStreamingConsumer {  
   def main(args: Array[String]): Unit = {
     println("\n\n\t\tKafka Consumer Application Started ...\n\n")
-    val sS = new sparkStreamng
+    val sS = new Consumer
     sS.kafkaConsume()
     println("\n\n\t\tKafka Consumer Application Completed ...\n\n")
   }
