@@ -158,7 +158,12 @@ class spark extends institute{
     import spark.implicits._
 
     val pathCsv = "/home/xs107-bairoy/xenonstack/l2/module4/spark/files/data.csv"
-    val df1 = spark.read.option("header", "true").format("csv").load(pathCsv)
+    val df1 = spark.read
+                  .option("header", "true")
+                  .option("inferSchema", "true")
+                  .format("csv")
+                  .load(pathCsv)
+    df1.printSchema()
 
     val dfPersist = df1.toDF().persist(StorageLevel.MEMORY_AND_DISK)
     dfPersist.show()
@@ -201,7 +206,7 @@ class spark extends institute{
     spark.sql("SELECT * FROM parquetFile where id>40").show()
     spark.sql("SELECT * FROM parquetFile where id>60").show()
     spark.sql("SELECT * FROM parquetFile where id>80").show()
-    spark.sql("SELECT * FROM parquetFile where id>100").show()
+    spark.sql("SELECT * FROM parquetFile where id>100").show()/*
     spark.sql("SELECT * FROM parquetFile where id>120").show()
     spark.sql("SELECT * FROM parquetFile where id>140").show()
     spark.sql("SELECT * FROM parquetFile where id>160").show()
@@ -241,7 +246,7 @@ class spark extends institute{
     spark.sql("SELECT * FROM parquetFile where id>940").show()
     spark.sql("SELECT * FROM parquetFile where id>960").show()
     spark.sql("SELECT * FROM parquetFile where id>980").show()
-    spark.sql("SELECT * FROM parquetFile where id>1000").show()
+    spark.sql("SELECT * FROM parquetFile where id>1000").show()*/
 
     /**
       * Un-Comment the lines below to save parquet to csv files
@@ -394,14 +399,14 @@ object demo {
     val spark1 = new spark
     //spark1.temp1()
     //spark1.temp2()
-    //spark1.temp3()
+    spark1.temp3()
     //spark1.temp4()
     //spark1.temp5()
     //spark1.broadcastJoins()
-    for(a <- 1 to 20){
+    /*for(a <- 1 to 20){
       spark1.randomJsonGenerator()
       Thread.sleep(3000)
-    }
+    }*/
   }
 }
 /**
