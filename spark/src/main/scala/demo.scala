@@ -352,8 +352,8 @@ class spark extends institute{
     val temp = Map(
       "id" -> Random.nextInt(10000),
       "name" -> Random.nextString(10),
-      "dob_year" -> Random.nextInt(3000),
-      "dob_month" -> Random.nextInt(12),
+      "dob_year" -> (1965+Random.nextInt(20)),
+      "dob_month" -> (Random.nextInt(11)+1),
       "gender" -> Random.nextString(5),
       "salary" -> Random.nextInt(9999999)
     )
@@ -399,16 +399,13 @@ object demo {
     val spark1 = new spark
     //spark1.temp1()
     //spark1.temp2()
-    spark1.temp3()
+    //spark1.temp3()
     //spark1.temp4()
     //spark1.temp5()
     //spark1.broadcastJoins()
-    /*for(a <- 1 to 20){
+    for(a <- 1 to 20){
       spark1.randomJsonGenerator()
       Thread.sleep(3000)
-    }*/
+    }
   }
 }
-/**
-*Dear Sir, I'm 
-*/

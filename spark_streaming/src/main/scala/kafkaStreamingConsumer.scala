@@ -204,15 +204,6 @@ class Consumer {
 
     val transactionDFCounts = transactionDF
               .withWatermark("timestamp", "10 minutes")
-              //.groupBy(window($"timestamp", "10 minutes"),$"value")
-              //.count()
-    // val transactionDFCounts1 = transactionDFCounts
-    //           .groupBy(window($"timestamp", "10 minutes"))
-    //           .count()
-    // transactionDFCounts1.writeStream
-    //                     .format("console")
-    //                     .outputMode("update")
-    //                     .start()
     
 
     transactionDFCounts
