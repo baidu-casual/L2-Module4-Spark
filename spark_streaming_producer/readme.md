@@ -3,6 +3,6 @@
 2. Start Broker Service             : <br><br>kafka-server-start.sh config/server.properties<br><br>
 3. Create a kafka topic             : <br><br>kafka-topics.sh --create --topic |topic-name| --bootstrap-server localhost:9092<br><br>
 4. Describe Topic                   : <br><br>kafka-topics.sh --describe --topic |topic-name| --bootstrap-server localhost:9092<br><br>
-5. Run the console producer client  : <br><br>kafka-console-producer.sh --topic |topic-name| --bootstrap-server localhost:9092<br><br>
+5. Run the console producer client  : <br><br>kafka-console-consumer.sh --topic |topic-name| --from-beginning --bootstrap-server localhost:9092<br><br>
 6. Run the script to deploy the Spark Kafka Application : <br>./run.sh<br><br><br>
 <H1>NOTE:</H1><br>Also push changes to GITHUB : <br><br>./git.sh
